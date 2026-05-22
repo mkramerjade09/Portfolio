@@ -1,25 +1,54 @@
-const fadeElements = document.querySelectorAll(
-  ".course-card, .gallery-grid img, .about-section"
-);
+document.addEventListener("DOMContentLoaded", () => {
 
-const observer = new IntersectionObserver((entries) => {
+  // ---------------- FADE IN ----------------
+  const fadeElements = document.querySelectorAll(
+    ".course-card, .gallery-grid img, .about-section"
+  );
 
-  entries.forEach((entry) => {
-
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-    }
-
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  }, {
+    threshold: 0.1
   });
 
-}, {
-  threshold: 0.1
-});
+  fadeElements.forEach((el) => {
+    el.classList.add("fade-in");
+    observer.observe(el);
+  });
 
-fadeElements.forEach((element) => {
+  // ---------------- LIGHTBOX ----------------
+  const images = document.querySelectorAll(".gallery-img");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightboxImg");
+  const closeBtn = document.getElementById("lightboxClose");
 
-  element.classList.add("fade-in");
+  // ONLY RUN LIGHTBOX IF IT EXISTS
+  if (lightbox && lightboxImg && closeBtn) {
 
-  observer.observe(element);
+    images.forEach(img => {
+      img.addEventListener("click", () => {
+        lightbox.classList.add("active");
+        lightboxImg.src = img.src;
+      });
+    });
+
+    const closeLightbox = () => {
+      lightbox.classList.remove("active");
+      lightboxImg.src = "";
+    };
+
+    closeBtn.addEventListener("click", closeLightbox);
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+  }
 
 });

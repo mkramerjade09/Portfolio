@@ -1,0 +1,109 @@
+/* HOMEPAGE HEADER */
+.home-header {
+  text-align: center;
+  padding: 6rem 2rem 2rem 2rem;
+}
+
+.home-header h1 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+}
+
+.home-header p {
+  color: #A3A3A3;
+  margin-top: 1rem;
+}
+
+/* HOMEPAGE CARDS */
+.home-links {
+  width: min(1000px, 90%);
+  margin: 3rem auto 6rem auto;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.home-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 3rem 2rem;
+
+  border: 1px solid rgba(255,255,255,0.1);
+
+  text-decoration: none;
+
+  color: #F5F5F5;
+
+  font-size: 1.2rem;
+
+  transition: 0.3s ease;
+
+  background: rgba(255,255,255,0.02);
+}
+
+.home-card:hover {
+  border-color: #3A5A78;
+  transform: translateY(-4px);
+}
+
+.bottom-nav {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 1.5rem;
+
+  padding: 3rem 1rem 4rem 1rem;
+}
+
+/* BUTTON STYLE */
+.bottom-btn {
+  text-decoration: none;
+
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+
+  color: #F5F5F5; /* NOT transparent text */
+
+  background: transparent; /* transparent button */
+
+  border: none; /* no outline */
+
+  padding: 0.4rem 0.2rem;
+
+  letter-spacing: 0.08em;
+
+  transition: 0.25s ease;
+
+  position: relative;
+}
+
+/* optional subtle hover effect (clean + minimal) */
+.bottom-btn::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+
+  width: 0%;
+  height: 1px;
+
+  background: #3A5A78;
+
+  transition: 0.3s ease;
+}
+
+.bottom-btn:hover::after {
+  width: 100%;
+}
+
+.bottom-btn:hover {
+  color: #FFFFFF;
+}
